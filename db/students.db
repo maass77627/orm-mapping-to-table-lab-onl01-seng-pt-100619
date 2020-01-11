@@ -1,6 +1,6 @@
 class Student 
 
-attr
+attr_accessor :name, :grade
 
-
+def initialize(
 end 
