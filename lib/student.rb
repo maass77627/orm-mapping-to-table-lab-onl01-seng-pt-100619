@@ -11,11 +11,7 @@ def initialize(name, grade, id = nil)
 end 
 
 def self.create_table
-    sql = <<-SQL
-      CREATE TABLE IF NOT EXISTS students (
-        id INTEGER PRIMARY KEY, 
-        name TEXT,
-        grade INTEGER
+    sql = <<-SQL CREATE TABLE IF NOT EXISTS students (id INTEGER PRIMARY KEY, name TEXT, grade INTEGER
         )
     SQL
       DB[:conn].execute(sql)
@@ -27,21 +23,7 @@ def self.drop_table
 end 
 
 def save
-  sql = <<-SQL INSERT INTO students (name, grade) VALUES (?, ?) SQL 
-  
-  DB[:conn].execute(sql, self.name, self.grade)
-  
-  @id = DB[:conn].execute("SELECT last_insert_row_id() FROM students")  [0] [0]
-  end 
-  
-  def save
-    sql = <<-SQL
-      INSERT INTO students (name, grade)
-        VALUES (?, ?)
-    SQL
-
-    DB[:conn].execute(sql, self.name, self.grade)
-  end
+  sql = <<-SQL INSERT INTO students (name, grade) VALUES (?, ?) SQL DB[:conn].execute(sql, self.name, self.grade)@id = DB[:conn].execute("SELECT last_insert_row_id() FROM students")  [0] [0] end 
   
   def self.create(name, grade)
     student = Student.new(name, album)
