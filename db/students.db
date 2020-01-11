@@ -28,4 +28,5 @@ end
 
 def save
 sql = <<-SQL
-INSERT INTO songs 
+INSERT INTO songs (name, album)
+
